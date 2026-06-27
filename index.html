@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Security Calculator 2025 — When to Claim Benefits &amp; Monthly Estimate</title>
+<meta name="description" content="Calculate your estimated Social Security benefit at age 62, 67 or 70. Find your break-even age, see the impact of early vs delayed claiming, and optimize your retirement strategy. Free, instant.">
+<link rel="canonical" href="https://social-security-calculator.pages.dev/">
+<meta property="og:title" content="Social Security Calculator 2025 — Benefit Estimator &amp; Claiming Strategy">
+<meta property="og:description" content="Estimate your Social Security monthly benefit at age 62, full retirement age, and 70. Find your break-even point and the best time to claim for maximum lifetime income.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://social-security-calculator.pages.dev/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6626869606288906" crossorigin="anonymous"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Social Security Benefits Calculator 2025","description":"Estimate Social Security monthly benefits and find the optimal claiming age for 2025","url":"https://social-security-calculator.pages.dev/","applicationCategory":"FinanceApplication","operatingSystem":"Any","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should I claim Social Security benefits?","acceptedAnswer":{"@type":"Answer","text":"There is no universally 'best' age — it depends on your health, other income sources, and marital status. Claiming at 62 gives you more checks but each is permanently reduced by up to 30%. Waiting until 70 maximizes each monthly payment (32% more than at full retirement age). The break-even age — where lifetime benefits equalize — is typically around age 78–82. If you expect to live past your break-even age, delaying is usually beneficial."}},{"@type":"Question","name":"What is the Full Retirement Age (FRA) in 2025?","acceptedAnswer":{"@type":"Answer","text":"Full Retirement Age (FRA) depends on your birth year. For anyone born in 1960 or later, FRA is 67. For those born 1955–1959, FRA ranges from 66 years and 2 months to 66 years and 10 months. Claiming before FRA permanently reduces your benefit; claiming after FRA (up to age 70) permanently increases it by 8% per year via Delayed Retirement Credits."}},{"@type":"Question","name":"How is my Social Security benefit calculated?","acceptedAnswer":{"@type":"Answer","text":"The SSA calculates your benefit based on your Average Indexed Monthly Earnings (AIME) — the average of your 35 highest earning years, indexed for inflation. Your AIME is then run through a formula called the Primary Insurance Amount (PIA): you receive 90% of the first $1,226 of AIME, 32% of AIME between $1,226 and $7,391, and 15% of any AIME above $7,391 (2025 bend points). The result is your monthly benefit at FRA."}},{"@type":"Question","name":"Can I work while collecting Social Security before full retirement age?","acceptedAnswer":{"@type":"Answer","text":"Yes, but there are earnings limits. In 2025, if you're under FRA for the full year, SSA withholds $1 for every $2 you earn above $22,320. In the year you reach FRA, SSA withholds $1 for every $3 earned above $59,520 (for months before your FRA birthday). After you reach FRA, you can earn unlimited income with no reduction in benefits. Withheld benefits are not lost — they're added back as a higher benefit once you reach FRA."}},{"@type":"Question","name":"Are Social Security benefits taxable?","acceptedAnswer":{"@type":"Answer","text":"Up to 85% of your Social Security benefit may be taxable depending on your 'combined income' (AGI + non-taxable interest + half your SS benefit). If combined income is under $25,000 (single) or $32,000 (married), benefits are not taxable. Between $25,000–$34,000 single ($32,000–$44,000 married), up to 50% is taxable. Above those thresholds, up to 85% is taxable. 13 states also tax Social Security benefits."}}]}</script>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;color:#0f172a;line-height:1.6}
+header{background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;padding:28px 20px 24px;text-align:center}
+header h1{font-size:clamp(20px,4vw,30px);font-weight:700}
+header p{margin-top:6px;opacity:.85;font-size:15px}
+.container{max-width:880px;margin:0 auto;padding:0 16px 60px}
+.ad-slot{background:#f1f5f9;border:1px dashed #cbd5e1;border-radius:8px;min-height:90px;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:12px;margin:20px 0}
+.card{background:#fff;border-radius:12px;box-shadow:0 1px 4px rgba(0,0,0,.08);padding:28px;margin-top:24px}
+.card h2{font-size:18px;font-weight:700;color:#1e293b;margin-bottom:20px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.grid-2{grid-template-columns:1fr}}
+label{display:block;font-size:13px;font-weight:600;color:#475569;margin-bottom:5px}
+.hint{font-size:11px;color:#94a3b8;margin-top:3px}
+.input-wrap{position:relative}
+.prefix,.suffix{position:absolute;top:50%;transform:translateY(-50%);font-size:15px;color:#64748b;font-weight:600;pointer-events:none}
+.prefix{left:12px}.suffix{right:12px}
+input[type=number],select{width:100%;border:1.5px solid #e2e8f0;border-radius:8px;background:#f8fafc;color:#0f172a;font-size:16px;padding:10px 12px;outline:none;transition:border-color .2s}
+input[type=number]:focus,select:focus{border-color:#2563eb;background:#fff}
+input.has-prefix{padding-left:28px}
+input.has-suffix{padding-right:40px}
+.sec-label{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#64748b;margin:22px 0 14px;padding-bottom:6px;border-bottom:1px solid #f1f5f9}
+.calc-btn{width:100%;margin-top:22px;padding:14px;background:linear-gradient(135deg,#1e3a5f,#2563eb);color:#fff;border:none;border-radius:10px;font-size:17px;font-weight:700;cursor:pointer;transition:opacity .2s}
+.calc-btn:hover{opacity:.9}
+#results{display:none}
+.age-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px}
+@media(max-width:560px){.age-cards{grid-template-columns:1fr}}
+.age-card{border-radius:12px;padding:18px;text-align:center;border:2px solid #e2e8f0;position:relative}
+.age-card.age62{border-color:#ef4444;background:#fef2f2}
+.age-card.age-fra{border-color:#2563eb;background:#eff6ff}
+.age-card.age70{border-color:#16a34a;background:#f0fdf4}
+.age-card .ac-age{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.age-card.age62 .ac-age{color:#dc2626}
+.age-card.age-fra .ac-age{color:#1d4ed8}
+.age-card.age70 .ac-age{color:#15803d}
+.age-card .ac-benefit{font-size:30px;font-weight:800;line-height:1}
+.age-card.age62 .ac-benefit{color:#dc2626}
+.age-card.age-fra .ac-benefit{color:#1d4ed8}
+.age-card.age70 .ac-benefit{color:#15803d}
+.age-card .ac-mo{font-size:12px;color:#94a3b8}
+.age-card .ac-pct{font-size:12px;font-weight:700;margin-top:6px}
+.age-card.age62 .ac-pct{color:#dc2626}
+.age-card.age70 .ac-pct{color:#15803d}
+.age-card .rec-badge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);background:#16a34a;color:#fff;font-size:10px;font-weight:700;padding:2px 10px;border-radius:10px;white-space:nowrap}
+.lifetime-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:24px}
+.lt-box{background:#f8fafc;border-radius:10px;padding:12px;text-align:center}
+.lt-box .lt-label{font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.4px}
+.lt-box .lt-val{font-size:20px;font-weight:800;color:#0f172a;margin-top:4px}
+.lt-box .lt-sub{font-size:11px;color:#94a3b8;margin-top:2px}
+.chart-wrap{margin:20px 0}
+.chart-wrap h3{font-size:14px;font-weight:700;margin-bottom:10px}
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.bar-row .bar-label{font-size:13px;color:#64748b;width:80px;text-align:right;flex-shrink:0}
+.bar-row .bar-track{flex:1;height:28px;background:#f1f5f9;border-radius:6px;overflow:hidden}
+.bar-row .bar-fill{height:100%;border-radius:6px;display:flex;align-items:center;padding-left:8px;font-size:12px;font-weight:700;color:#fff;transition:width .5s}
+.bar-row .bar-val{font-size:13px;font-weight:700;width:70px;flex-shrink:0}
+.breakeven-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:16px;margin:16px 0}
+.breakeven-box h3{font-size:15px;font-weight:700;color:#1e40af;margin-bottom:8px}
+.breakeven-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+@media(max-width:480px){.breakeven-grid{grid-template-columns:1fr}}
+.be-item{background:#fff;border-radius:8px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center}
+.be-item .be-label{font-size:12px;color:#64748b}
+.be-item .be-val{font-size:15px;font-weight:700;color:#1d4ed8}
+.fra-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:12px}
+.fra-table th{background:#eff6ff;padding:8px 10px;text-align:left;font-size:12px;font-weight:700;color:#2563eb;text-transform:uppercase}
+.fra-table td{padding:8px 10px;border-bottom:1px solid #f1f5f9;color:#334155}
+.fra-table tr.highlight td{background:#eff6ff;font-weight:700;color:#1e3a5f}
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 16px;margin-top:16px;font-size:14px;color:#1e40af;line-height:1.7}
+.disclaimer{background:#f8fafc;border-radius:8px;padding:12px 16px;font-size:12px;color:#94a3b8;margin-top:16px}
+details{border-bottom:1px solid #f1f5f9;padding:14px 0}
+summary{font-size:15px;font-weight:600;cursor:pointer;color:#1e293b;list-style:none;display:flex;justify-content:space-between}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:20px;color:#2563eb;font-weight:400}
+details[open] summary::after{content:'−'}
+details p{margin-top:10px;color:#475569;font-size:14px;line-height:1.7}
+footer{text-align:center;color:#94a3b8;font-size:12px;padding:20px;border-top:1px solid #e2e8f0;margin-top:40px}
+footer a{color:#64748b}
+</style>
+</head>
+<body>
+<header>
+  <h1>🏛️ Social Security Calculator</h1>
+  <p>Estimate your monthly benefit · Find the best age to claim · 2025</p>
+</header>
+<div class="container">
+  <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6626869606288906" data-ad-slot="1122334455" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="card">
+    <h2>📋 Your Information</h2>
+
+    <div class="sec-label">Personal Details</div>
+    <div class="grid-2">
+      <div>
+        <label for="birth-year">Year of Birth</label>
+        <input type="number" id="birth-year" value="1965" min="1943" max="2003">
+        <div class="hint">Determines your Full Retirement Age (FRA)</div>
+      </div>
+      <div>
+        <label for="current-age">Current Age</label>
+        <input type="number" id="current-age" value="60" min="20" max="69">
+      </div>
+    </div>
+
+    <div class="sec-label">Earnings</div>
+    <div class="grid-2">
+      <div>
+        <label for="avg-salary">Average Annual Earnings</label>
+        <div class="input-wrap"><span class="prefix">$</span><input type="number" id="avg-salary" class="has-prefix" value="75000" min="0" step="1000"></div>
+        <div class="hint">Your average salary over your career (current dollars)</div>
+      </div>
+      <div>
+        <label for="years-worked">Years Worked (or planned)</label>
+        <input type="number" id="years-worked" value="35" min="10" max="50">
+        <div class="hint">SSA uses your best 35 years. Fewer = lower benefit.</div>
+      </div>
+    </div>
+
+    <div class="sec-label">Claiming Age to Analyze</div>
+    <div>
+      <label for="claim-age">Your Intended Claiming Age</label>
+      <select id="claim-age">
+        <option value="62">62 (earliest possible)</option>
+        <option value="63">63</option>
+        <option value="64">64</option>
+        <option value="65">65</option>
+        <option value="66">66</option>
+        <option value="67" selected>67 (FRA for born 1960+)</option>
+        <option value="68">68</option>
+        <option value="69">69</option>
+        <option value="70">70 (maximum benefit)</option>
+      </select>
+    </div>
+
+    <button class="calc-btn" onclick="calculate()">Calculate My Social Security Benefit →</button>
+  </div>
+
+  <div id="results">
+    <div class="card">
+      <div class="age-cards" id="age-cards"></div>
+
+      <div class="chart-wrap">
+        <h3>Monthly benefit by claiming age</h3>
+        <div id="benefit-bars"></div>
+      </div>
+
+      <div class="breakeven-box" id="breakeven-box"></div>
+
+      <div class="lifetime-grid" id="lifetime-grid"></div>
+
+      <div class="info-box" id="info-box"></div>
+      <div class="disclaimer">⚠️ Estimates are based on simplified PIA calculations using 2025 SSA bend points. Actual benefits depend on your exact earnings history. For a precise estimate, create a free account at ssa.gov/myaccount to see your official Social Security Statement.</div>
+    </div>
+
+    <div class="card">
+      <h2>📅 Full Retirement Age by Birth Year</h2>
+      <table class="fra-table" id="fra-table"></table>
+    </div>
+  </div>
+
+  <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6626869606288906" data-ad-slot="2233445566" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+
+  <div class="card">
+    <h2>Frequently Asked Questions</h2>
+    <details open><summary>When should I claim Social Security benefits?</summary><p>There is no universally 'best' age — it depends on your health, other income sources, and marital status. Claiming at 62 gives you more checks but each is permanently reduced by up to 30%. Waiting until 70 maximizes each check (32% more than at FRA). The break-even age — where lifetime benefits equalize — is typically around age 78–82. If you expect to live past your break-even age, delaying is usually beneficial.</p></details>
+    <details><summary>What is the Full Retirement Age (FRA) in 2025?</summary><p>For anyone born in 1960 or later, FRA is 67. For those born 1955–1959, FRA ranges from 66 years and 2 months to 66 years and 10 months. Claiming before FRA permanently reduces your benefit; claiming after FRA (up to age 70) permanently increases it by 8% per year via Delayed Retirement Credits.</p></details>
+    <details><summary>How is my Social Security benefit calculated?</summary><p>The SSA uses your Average Indexed Monthly Earnings (AIME) — the average of your 35 highest earning years. Your AIME runs through the PIA formula: 90% of the first $1,226/month, 32% of AIME between $1,226–$7,391, and 15% above $7,391 (2025 bend points). The result is your monthly benefit at FRA.</p></details>
+    <details><summary>Can I work while collecting Social Security before full retirement age?</summary><p>Yes, but earnings limits apply. In 2025, if you're under FRA for the full year, SSA withholds $1 for every $2 you earn above $22,320. In the year you reach FRA, SSA withholds $1 for every $3 earned above $59,520. After FRA, you can earn unlimited income with no reduction. Withheld benefits are added back as a higher benefit once you reach FRA.</p></details>
+    <details><summary>Are Social Security benefits taxable?</summary><p>Up to 85% of your benefit may be taxable. If your combined income (AGI + half your SS benefit) is under $25,000 (single) or $32,000 (married), benefits are not taxable. Between $25k–$34k single ($32k–$44k married), up to 50% is taxable. Above those thresholds, up to 85% is taxable. 13 states also tax Social Security.</p></details>
+  </div>
+
+  <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-6626869606288906" data-ad-slot="3344556677" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+</div>
+
+<footer><p>SocialSecurityCalculator · Estimates only. Verify at ssa.gov/myaccount. Not financial or retirement advice.</p><p style="margin-top:6px"><a href="/privacy.html">Privacy Policy</a></p></footer>
+
+<script>
+const fmt=n=>'$'+Math.round(n).toLocaleString('en-US');
+
+// FRA lookup by birth year
+function getFRA(birthYear){
+  if(birthYear<=1937)return 65;
+  if(birthYear===1938)return 65+2/12;
+  if(birthYear===1939)return 65+4/12;
+  if(birthYear===1940)return 65+6/12;
+  if(birthYear===1941)return 65+8/12;
+  if(birthYear===1942)return 65+10/12;
+  if(birthYear<=1954)return 66;
+  if(birthYear===1955)return 66+2/12;
+  if(birthYear===1956)return 66+4/12;
+  if(birthYear===1957)return 66+6/12;
+  if(birthYear===1958)return 66+8/12;
+  if(birthYear===1959)return 66+10/12;
+  return 67;
+}
+
+function fraLabel(fra){
+  const whole=Math.floor(fra);
+  const months=Math.round((fra-whole)*12);
+  return months===0?`${whole}`:`${whole} & ${months} months`;
+}
+
+// Simplified AIME from average salary (career average in today's dollars)
+// Real AIME = indexed earnings, we approximate
+function calcAIME(avgSalary,yearsWorked){
+  const effectiveYears=Math.min(yearsWorked,35);
+  const totalEarnings=avgSalary*effectiveYears;
+  return totalEarnings/(35*12); // spread over 35 years
+}
+
+// 2025 PIA bend points
+function calcPIA(aime){
+  const bp1=1226,bp2=7391;
+  let pia=0;
+  pia+=Math.min(aime,bp1)*0.90;
+  if(aime>bp1)pia+=(Math.min(aime,bp2)-bp1)*0.32;
+  if(aime>bp2)pia+=(aime-bp2)*0.15;
+  return pia;
+}
+
+// Reduction/increase factor by claiming age vs FRA
+function claimingFactor(claimAge,fra){
+  const diff=claimAge-fra;
+  if(diff>=0)return 1+diff*0.08; // 8% per year DRC
+  const monthsEarly=(fra-claimAge)*12;
+  // First 36 months: 5/9% per month, additional: 5/12% per month
+  const first36=Math.min(monthsEarly,36);
+  const additional=Math.max(0,monthsEarly-36);
+  return 1-(first36*5/9/100)-(additional*5/12/100);
+}
+
+function calculate(){
+  const birthYear=parseInt(document.getElementById('birth-year').value)||1960;
+  const currentAge=parseInt(document.getElementById('current-age').value)||60;
+  const avgSalary=parseFloat(document.getElementById('avg-salary').value)||75000;
+  const yearsWorked=parseInt(document.getElementById('years-worked').value)||35;
+  const claimAge=parseInt(document.getElementById('claim-age').value)||67;
+
+  const fra=getFRA(birthYear);
+  const aime=calcAIME(avgSalary,yearsWorked);
+  const pia=calcPIA(aime); // benefit at FRA
+
+  const benefit62=pia*claimingFactor(62,fra);
+  const benefitFRA=pia;
+  const benefit70=pia*claimingFactor(70,fra);
+  const benefitChosen=pia*claimingFactor(claimAge,fra);
+
+  // Age cards
+  const fraLabel2=fra===67?'67 (FRA)':fra===66?'66 (FRA)':`${fraLabel(fra)} (FRA)`;
+  const isMaxBenefit=claimAge>=70;
+  document.getElementById('age-cards').innerHTML=`
+    <div class="age-card age62">
+      <div class="ac-age">Claim at 62</div>
+      <div class="ac-benefit">${fmt(benefit62)}</div>
+      <div class="ac-mo">/month</div>
+      <div class="ac-pct">${((benefit62/pia-1)*100).toFixed(0)}% of full benefit</div>
+    </div>
+    <div class="age-card age-fra">
+      <div class="ac-age">Claim at ${fraLabel2}</div>
+      <div class="ac-benefit">${fmt(benefitFRA)}</div>
+      <div class="ac-mo">/month</div>
+      <div class="ac-pct">100% (full benefit)</div>
+    </div>
+    <div class="age-card age70">
+      ${isMaxBenefit?'<div class="rec-badge">Your choice ★</div>':''}
+      <div class="ac-age">Claim at 70</div>
+      <div class="ac-benefit">${fmt(benefit70)}</div>
+      <div class="ac-mo">/month</div>
+      <div class="ac-pct">+${((benefit70/pia-1)*100).toFixed(0)}% above full benefit</div>
+    </div>
+  `;
+
+  // Benefit bars
+  const ages=[62,63,64,65,66,67,68,69,70];
+  const colors={62:'#ef4444',63:'#f97316',64:'#f59e0b',65:'#eab308',66:'#84cc16',67:'#2563eb',68:'#16a34a',69:'#15803d',70:'#166534'};
+  const maxBenefit=benefit70;
+  let barsHTML='';
+  ages.forEach(age=>{
+    const b=pia*claimingFactor(age,fra);
+    const pct=(b/maxBenefit*100).toFixed(1);
+    const isChosen=age===claimAge;
+    barsHTML+=`<div class="bar-row">
+      <div class="bar-label" style="${isChosen?'font-weight:700;color:#0f172a':''}">Age ${age}${isChosen?' ←':''}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${colors[age]}">${pct}%</div></div>
+      <div class="bar-val" style="${isChosen?'font-weight:700;color:#0f172a':''}">${fmt(b)}</div>
+    </div>`;
+  });
+  document.getElementById('benefit-bars').innerHTML=barsHTML;
+
+  // Break-even analysis
+  function lifeTimeAt(claimA,toAge){
+    const mo=pia*claimingFactor(claimA,fra);
+    return mo*Math.max(0,(toAge-claimA)*12);
+  }
+  // Break-even between 62 and FRA
+  let beAge62Fra=null;
+  for(let age=62;age<=100;age+=0.5){
+    if(lifeTimeAt(62,age)>=lifeTimeAt(fra,age)){beAge62Fra=age;break;}
+  }
+  // Break-even between FRA and 70
+  let beAgeFra70=null;
+  for(let age=fra;age<=100;age+=0.5){
+    if(lifeTimeAt(70,age)>=lifeTimeAt(fra,age)){beAgeFra70=age;break;}
+  }
+
+  document.getElementById('breakeven-box').innerHTML=`
+    <h3>Break-even Analysis</h3>
+    <p style="font-size:13px;color:#1e40af">The age at which total lifetime benefits equalize between claiming options.</p>
+    <div class="breakeven-grid">
+      <div class="be-item"><span class="be-label">Age 62 vs FRA break-even</span><span class="be-val">Age ~${beAge62Fra?Math.round(beAge62Fra):'80+'}</span></div>
+      <div class="be-item"><span class="be-label">FRA vs Age 70 break-even</span><span class="be-val">Age ~${beAgeFra70?Math.round(beAgeFra70):'82+'}</span></div>
+      <div class="be-item"><span class="be-label">US average life expectancy</span><span class="be-val">Age 77–79</span></div>
+      <div class="be-item"><span class="be-label">If you live to 85</span><span class="be-val">${lifeTimeAt(70,85)>lifeTimeAt(62,85)?'Wait to 70 wins':'Claim at 62 wins'}</span></div>
+    </div>
+  `;
+
+  // Lifetime totals at age 85
+  document.getElementById('lifetime-grid').innerHTML=`
+    <div class="lt-box"><div class="lt-label">Your chosen benefit</div><div class="lt-val">${fmt(benefitChosen)}</div><div class="lt-sub">/month at age ${claimAge}</div></div>
+    <div class="lt-box"><div class="lt-label">Annual benefit</div><div class="lt-val">${fmt(benefitChosen*12)}</div><div class="lt-sub">/year</div></div>
+    <div class="lt-box"><div class="lt-label">Lifetime to age 85</div><div class="lt-val">${fmt(lifeTimeAt(claimAge,85))}</div><div class="lt-sub">vs ${fmt(lifeTimeAt(70,85))} if wait to 70</div></div>
+    <div class="lt-box"><div class="lt-label">COLA estimate</div><div class="lt-val">~2.5%</div><div class="lt-sub">annual adjustment (historical avg)</div></div>
+  `;
+
+  // Info box
+  const infoEl=document.getElementById('info-box');
+  if(claimAge<=62){infoEl.textContent=`💡 Claiming at 62 gives you benefits 5 years sooner, but permanently reduces each check by ~${((1-benefit62/pia)*100).toFixed(0)}%. You need to live past age ~${beAge62Fra?Math.round(beAge62Fra):80} for the FRA strategy to win. Consider your health, other retirement income, and whether you need the cash flow now.`;}
+  else if(claimAge<fra){infoEl.textContent=`💡 Claiming before your FRA of ${fraLabel(fra)} permanently reduces your benefit by ${((1-benefitChosen/pia)*100).toFixed(0)}%. Unless you have health concerns or need the income, waiting gives a meaningfully higher monthly check for life.`;}
+  else if(claimAge===70){infoEl.textContent=`💡 Waiting until 70 maximizes your monthly benefit at ${fmt(benefit70)}/month — ${((benefit70/pia-1)*100).toFixed(0)}% more than claiming at FRA. This strategy is especially valuable if you're in good health, have other income sources to bridge the gap, or want to maximize survivor benefits for a spouse.`;}
+  else{infoEl.textContent=`💡 At age ${claimAge} you receive ${fmt(benefitChosen)}/month — ${claimAge<fra?((1-benefitChosen/pia)*100).toFixed(0)+'% below FRA':'above FRA'}. Waiting until 70 would give you ${fmt(benefit70-benefitChosen)}/month more (${fmt((benefit70-benefitChosen)*12)}/year). The break-even for waiting to 70 vs your chosen age is around age ${beAgeFra70?Math.round(beAgeFra70):82}.`;}
+
+  // FRA table
+  const fraData=[
+    {range:'1943–1954',fra:'66',reduction:'25%',delay:'+8%/yr'},
+    {range:'1955',fra:'66 & 2 months',reduction:'25.83%',delay:'+8%/yr'},
+    {range:'1956',fra:'66 & 4 months',reduction:'26.67%',delay:'+8%/yr'},
+    {range:'1957',fra:'66 & 6 months',reduction:'27.5%',delay:'+8%/yr'},
+    {range:'1958',fra:'66 & 8 months',reduction:'28.33%',delay:'+8%/yr'},
+    {range:'1959',fra:'66 & 10 months',reduction:'29.17%',delay:'+8%/yr'},
+    {range:'1960 and later',fra:'67',reduction:'30%',delay:'+8%/yr'},
+  ];
+  let tableHTML='<thead><tr><th>Birth Year</th><th>Full Retirement Age</th><th>Early Reduction (at 62)</th><th>Delay Credit (per year)</th></tr></thead><tbody>';
+  const userFra=getFRA(birthYear);
+  fraData.forEach(r=>{
+    const highlight=(birthYear>=1960&&r.range==='1960 and later')||(birthYear>=1943&&birthYear<=1954&&r.range==='1943–1954')||(r.fra.startsWith(fraLabel(userFra)));
+    const isUser=Math.abs(parseFloat(r.fra.split('&')[0])-Math.floor(userFra))<1;
+    tableHTML+=`<tr class="${isUser?'highlight':''}"><td>${r.range}${isUser?' ← you':''}</td><td>${r.fra}</td><td>−${r.reduction}</td><td>${r.delay}</td></tr>`;
+  });
+  tableHTML+='</tbody>';
+  document.getElementById('fra-table').innerHTML=tableHTML;
+
+  document.getElementById('results').style.display='block';
+  document.getElementById('results').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+window.addEventListener('DOMContentLoaded',calculate);
+</script>
+</body>
+</html>
